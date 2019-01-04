@@ -1,9 +1,11 @@
 package sample;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ReseauNeuron {
     public double[] entree;
@@ -46,13 +48,21 @@ public class ReseauNeuron {
         return classe();
 
     }
+
+    public void initialiser(){
+        for (int i =0; i<hiddenNeurons.length; i++) hiddenNeurons[i].initialiser();
+        for (int i =0; i<resultNeurons.length; i++) resultNeurons[i].initialiser();
+
+    }
     public void entrainerReseau(double alpha, int tailleExemple) throws IOException {
-        boolean stop=false;
-        while (!stop)
+        Scanner line = new Scanner(new File("C:\\Users\\Nassim ADRAO\\IdeaProjects\\ReseauNeuron\\src\\sample\\trainingData.txt"));
+        while (line.hasNextLine())
         {
+            String ligneSuivante = line.nextLine();
+            System.out.println(ligneSuivante);
             System.out.print("enter training example");
-        Scanner bagra = new Scanner(System.in);
-        int hello=0;
+        Scanner bagra = new Scanner(ligneSuivante);
+            int hello=0;
         entree=new double[tailleExemple];
         resultatsVoulus= new double[resultNeurons.length];
         while (hello<tailleExemple) {entree[hello]=bagra.nextDouble(); System.out.println(entree[hello]); hello++;}
@@ -74,9 +84,7 @@ public class ReseauNeuron {
             }
         }
             calculerSortie(alpha);
-            System.out.println("Do you want to stop ?");
-            Scanner stoppable=new Scanner(System.in);
-            if(Boolean.parseBoolean(stoppable.next())) stop=true;}
+        }
 
     }
     }

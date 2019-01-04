@@ -65,7 +65,8 @@ public void invokeReseauNeuron() throws IOException {
         for (Node d:gridd.getChildren()
              ) {
             d.setOnMouseClicked(event -> {
-                    Circle a=new Circle();
+                nassim.initialiser();
+                Circle a=new Circle();
                     a.setFill(Color.RED);
                     a.setRadius(20);
                     gridd.add(a,gridd.getChildren().indexOf(d)%3,gridd.getChildren().indexOf(d)/3);
@@ -102,6 +103,7 @@ public void invokeReseauNeuron() throws IOException {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                nassim.initialiser();
 
             });
         }

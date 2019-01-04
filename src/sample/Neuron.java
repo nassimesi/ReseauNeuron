@@ -22,6 +22,10 @@ public class Neuron {
 
     }
 
+    public void initialiser(){
+        in =0;
+        out = 0;
+    }
     public void calculerSortie(double[] entree){
         //System.out.println(entree.length);
         this.entree = new double[entree.length+1];
